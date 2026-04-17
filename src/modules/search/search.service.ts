@@ -1,12 +1,12 @@
 // src/modules/search/search.service.ts
 import { prisma } from "../../lib/prisma";
 
-export const searchAyahs = (query: string) =>
-  prisma.ayah.findMany({
+export const searchAyahs = async (query: string) => {
+  const ayahs = await prisma.ayah.findMany({
     where: {
       translation: {
         contains: query,
-        mode: "insensitive", // case-insensitive search
+        mode: "insensitive",
       },
     },
     include: {
@@ -14,6 +14,12 @@ export const searchAyahs = (query: string) =>
         select: { nameEnglish: true, nameArabic: true },
       },
     },
-    take: 50, // cap results — don't return thousands of rows
+    take: 50,
     orderBy: { surahId: "asc" },
   });
+
+  return {
+    count: ayahs.length,
+    ayahs,
+  };
+};

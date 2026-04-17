@@ -17,7 +17,7 @@ export const searchAyahs = async (
       return;
     }
     const data = await searchService.searchAyahs(q);
-    res.json({ success: true, data });
+    res.json({ success: true, count: data.count, data });
   } catch (err) {
     next(err);
   }
