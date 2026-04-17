@@ -1,0 +1,32 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+ // url      = env("DATABASE_URL")
+}
+
+model Surah {
+  id          Int    @id
+  nameArabic  String
+  nameEnglish String
+  nameMeaning String
+  revelation  String
+  ayahCount   Int
+  ayahs       Ayah[]
+}
+
+model Ayah {
+  id          Int    @id @default(autoincrement())
+  surahId     Int
+  ayahNumber  Int
+  arabic      String
+  translation String
+  surah       Surah  @relation(fields: [surahId], references: [id])
+
+  @@unique([surahId, ayahNumber])
+  @@index([surahId])
+}
