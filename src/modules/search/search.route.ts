@@ -1,0 +1,9 @@
+// src/modules/search/search.route.ts
+import { Router } from "express";
+import * as searchController from "./search.controller";
+
+const router = Router();
+
+router.get("/", searchController.searchAyahs);
+
+export default router;
