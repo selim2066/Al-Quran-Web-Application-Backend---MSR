@@ -1,3 +1,21 @@
+// {
+//   "compilerOptions": {
+//     "target": "ES2023",
+//     "module": "CommonJS",
+//     "moduleResolution": "node",
+//     "outDir": "./dist",
+//     "rootDir": "./src",
+//     "strict": true,
+//     "esModuleInterop": true,
+//     "skipLibCheck": true,
+//     "forceConsistentCasingInFileNames": true
+//   },
+//  "include": [
+//   "src/**/*",
+//   "prisma.config.ts"
+// ],
+//   "exclude": ["node_modules", "dist", "generated/prisma"]
+// }
 
 {
   "compilerOptions": {
@@ -11,9 +29,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
- "include": [
-  "src/**/*",
-  "prisma.config.ts"
-],
-  "exclude": ["node_modules", "dist", "generated/prisma"]
+  "include": ["src/**/*"], // ← make sure this is ONLY src
+  "exclude": ["node_modules", "dist", "prisma.config.ts"] // ← CHANGED, added prisma.config.ts
 }

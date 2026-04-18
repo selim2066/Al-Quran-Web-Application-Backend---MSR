@@ -27,17 +27,11 @@ import { de } from "zod/v4/locales"
 
 // const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
 
-// export const prisma =
-//   globalForPrisma.prisma ??
-//   new PrismaClient({ adapter });
-
-// if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
 
 // !update for vercel deployment
 import { PrismaPg } from "@prisma/adapter-pg";
-//import { PrismaClient } from "generated/prisma";
-import { PrismaClient } from "@prisma/client"; 
 import { Pool } from "pg";
+import { PrismaClient } from "../generated/prisma";
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
