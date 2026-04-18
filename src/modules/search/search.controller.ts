@@ -1,5 +1,4 @@
-// src/modules/search/search.controller.ts
-import { Request, Response, NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
 import * as searchService from "./search.service";
 
 export const searchAyahs = async (
@@ -16,8 +15,14 @@ export const searchAyahs = async (
       });
       return;
     }
-    const data = await searchService.searchAyahs(q);
-    res.json({ success: true, count: data.count, data });
+
+    const result = await searchService.searchAyahs(q);
+
+    res.json({
+      success: true,
+      count: result.count,
+      data: result.ayahs,  // ← send ONLY the array, not the whole result object
+    });
   } catch (err) {
     next(err);
   }
