@@ -35,7 +35,8 @@ import { de } from "zod/v4/locales"
 
 // !update for vercel deployment
 import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "@prisma/client";
+//import { PrismaClient } from "generated/prisma";
+import { PrismaClient } from "@prisma/client"; 
 import { Pool } from "pg";
 
 const pool = new Pool({
